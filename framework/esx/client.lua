@@ -1,24 +1,26 @@
+local ESX = exports['es_extended']:getSharedObject()
+
 local isDead = false
-AddEventHandler(Bridge.FrameworkPrefix .. ':onPlayerDeath', function()
+AddEventHandler(BridgeConfig.FrameworkEvents.PlayerDeath, function()
     isDead = true
 end)
 
-AddEventHandler(Bridge.FrameworkPrefix .. ':onPlayerSpawn', function()
+AddEventHandler(BridgeConfig.FrameworkEvents.PlayerSpawn, function()
     isDead = false
 end)
 
-function isDead()
-    return isDead
-end
-
 local loaded = false
-RegisterNetEvent(Bridge.FrameworkPrefix .. ':playerLoaded', function(PlayerData)
+RegisterNetEvent(BridgeConfig.FrameworkEvents.PlayerLoaded, function(PlayerData)
     loaded = true
 end)
 
-RegisterNetEvent(Bridge.FrameworkPrefix .. ':onPlayerLogout', function()
+RegisterNetEvent(BridgeConfig.FrameworkEvents.PlayerLogout, function()
     loaded = false
 end)
+
+function IsDead()
+    return isDead
+end
 
 function IsPlayerLoaded()
     return ESX.IsPlayerLoaded()
@@ -27,3 +29,5 @@ end
 function GetPlayerData()
     return ESX.GetPlayerData()
 end
+
+print("adkmnaijdnaidnak")

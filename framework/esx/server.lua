@@ -45,11 +45,33 @@ function AddBank(source, amount)
 end
 
 ---@param source number
+---@param amount number
+function SetMoney(source, amount)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    xPlayer.setAccountMoney('money', amount)
+end
+
+---@param source number
+---@param amount number
+function SetBank(source, amount)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    xPlayer.setAccountMoney('bank', amount)
+end
+
+---@param source number
 ---@return1 string
 ---@return2 number
 function GetJob(source)
     local xPlayer = ESX.GetPlayerFromId(source)
     return xPlayer.job.name, xPlayer.job.grade
+end
+
+---@param source number
+---@param job string
+---@param grade number
+function SetJob(source, job, grade)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    xPlayer.setJob(job, grade)
 end
 
 ---@param source number
