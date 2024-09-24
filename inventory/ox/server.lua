@@ -24,3 +24,8 @@ end
 function ClearInventory(source)
     exports.ox_inventory:ClearInventory(source, false)
 end
+
+function GetItemCount(source, itemName, metadata)
+    local itemCount = exports.ox_inventory:GetItem(itemName, metadata, true)
+    return itemCount
+end

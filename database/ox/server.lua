@@ -12,8 +12,3 @@ function DatabaseUpdate(command, args)
     local affectedRows = MySQL.update.await(command, args)
     return affectedRows
 end
-
-function DatabaseScalar(command, args)
-    local ... = MySQL.scalar.await(command, args)
-    return ...
-end

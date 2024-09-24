@@ -29,5 +29,3 @@ end
 function GetPlayerData()
     return ESX.GetPlayerData()
 end
-
-print("adkmnaijdnaidnak")
