@@ -63,7 +63,7 @@ end
 ---@return2 number
 function GetJob(source)
     local xPlayer = ESX.GetPlayerFromId(source)
-    return xPlayer.job.name, xPlayer.job.grade
+    return xPlayer.job.name, xPlayer.job.grade, xPlayer.job.grade_name
 end
 
 ---@param source number

@@ -29,3 +29,8 @@ end
 function GetPlayerData()
     return ESX.GetPlayerData()
 end
+
+function GetPlayerJob()
+    local job = ESX.GetPlayerData().job
+    return job.name, job.grade, job.grade_name
+end

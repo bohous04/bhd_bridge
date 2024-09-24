@@ -24,6 +24,8 @@ if isServer then
         GetJob = GetJob,
         SetJob = SetJob,
         GetGroup = GetGroup,
+        GetIdentifier = GetIdentifier,
+        GetName = GetName,
         -- INV SERVER
         HasItem = HasItem,
         GetItemCount = GetItemCount,
@@ -48,6 +50,7 @@ else
         -- FRAMEWORK CLIENT
         IsPlayerLoaded = IsPlayerLoaded,
         GetPlayerData = GetPlayerData,
+        GetPlayerJob = GetPlayerJob,
         IsDead = IsDead,
         -- INV CLIENT
         HasItem = HasItem,
