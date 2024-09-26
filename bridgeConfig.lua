@@ -1,3 +1,8 @@
+Bridge = {}
+exports("getBridge", function()
+    return Bridge
+end)
+
 BridgeConfig = {
     FrameworkPrefix = "esx",
     FrameworkEvents = {
@@ -74,8 +79,3 @@ else
         --//TODO dodělat target
     }    
 end
-
-
-exports("getBridge", function()
-    return Bridge
-end)
