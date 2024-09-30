@@ -12,6 +12,8 @@ end)
 local loaded = false
 RegisterNetEvent(BridgeConfig.FrameworkEvents.PlayerLoaded, function(PlayerData)
     loaded = true
+    TriggerEvent("bhd_bridge:playerLoaded")
+    TriggerServerEvent("bhd_bridge:playerLoaded")
 end)
 
 RegisterNetEvent(BridgeConfig.FrameworkEvents.PlayerLogout, function()
