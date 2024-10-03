@@ -1,6 +1,6 @@
 if not GetResourceState('es_extended'):find('start') then return end
 
-local ESX = exports['es_extended']:getSharedObject()
+ESX = exports['es_extended']:getSharedObject()
 
 ---@param source number
 ---@return number

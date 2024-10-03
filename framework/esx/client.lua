@@ -1,4 +1,6 @@
-local ESX = exports['es_extended']:getSharedObject()
+if not GetResourceState('es_extended'):find('start') then return end
+
+ESX = exports['es_extended']:getSharedObject()
 
 local isDead = false
 AddEventHandler(BridgeConfig.FrameworkEvents.PlayerDeath, function()
