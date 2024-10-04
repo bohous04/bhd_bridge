@@ -68,14 +68,16 @@ else
         DeleteNPC = DeleteNPC,
         -- BLIPS CLIENT
 
-        -- CreateBlip = CreateBlip,
-        -- DeleteBlip = DeleteBlip,
+        AddBlip = AddBlip,
+        DeleteBlip = DeleteBlip,
 
         -- VEHICLES CLIENT
         SetVehicleProperties = SetVehicleProperties,
         GetVehicleProperties = GetVehicleProperties,
         -- TARGET CLIENT
 
-        --//TODO dodělat target
+        -- DISPATCH CLIENT
+        Dispatch = Dispatch,
+        --//TODO dodělat target, dispatch
     }    
 end
