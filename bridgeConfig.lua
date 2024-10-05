@@ -78,6 +78,11 @@ else
 
         -- DISPATCH CLIENT
         Dispatch = Dispatch,
+        
+        -- CHOOSE CLOSEST PLAYER CLIENT
+        ChoosePlayer = ChoosePlayer,
+
+
         --//TODO dodělat target, dispatch
     }    
 end
