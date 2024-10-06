@@ -1,3 +1,3 @@
-function Notify(message, time, type, title)
-    --//TODO dodělat notifikace
+function Notify(title, message, time, type)
+    exports['okokNotify']:Alert(title, message, time, type)
 end
