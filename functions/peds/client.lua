@@ -26,8 +26,7 @@ local peds = {
 
 function CreateNPC(data)
     if peds[data.name] then
-        print("[ERROR] NPC with name " .. data.name .. " already exists.")
-        return
+        print("[ERROR] NPC with name " .. data.name .. " already exists, replacing PED.")
     end
     peds[data.name] = data
 end
@@ -37,11 +36,16 @@ function DeleteNPC(name)
         print("[ERROR] NPC with name " .. name .. " does not exist.")
         return
     end
+    DeleteEntity(peds[name].spawned)
     peds[name] = nil
 end
 
 Citizen.CreateThread(function()
     Wait(10000)
+    if not cache.coords then
+        local ped = PlayerPedId()
+        cache.coords = GetEntityCoords(ped)
+    end
     while true do
         for k, v in pairs(peds) do
             local dist = #(vec3(v.pos) - cache.coords)

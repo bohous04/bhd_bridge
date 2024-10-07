@@ -1,6 +1,6 @@
 function Dispatch(code, description, coords, jobs, blipName, blipSprite, blipScale, blipColor)
     if GetResourceState("cd_dispatch") == "started" then
-        local data = exports['cd_dispatch']:GetPlayerInfo() --//TODO do bridge
+        local data = exports['cd_dispatch']:GetPlayerInfo()
         TriggerServerEvent('cd_dispatch:AddNotification', {
             job_table = jobs,
             coords = coords,

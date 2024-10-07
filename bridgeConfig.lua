@@ -42,6 +42,11 @@ if isServer then
         RemoveItem = RemoveItem,
         ClearInventory = ClearInventory,
         CanCarryItem = CanCarryItem,
+        GetInventory = GetInventory,
+        UpdateVehicle = UpdateVehicle,
+        Search = Search,
+        SetDurability = SetDurability,
+        
         -- BAN SERVER
         Ban = Ban,
         -- NOTIFY SERVER
@@ -66,6 +71,7 @@ else
         HasItem = HasItem,
         GetCurrentWeapon = GetCurrentWeapon,
         CloseInventory = CloseInventory,
+        Search = Search,
         -- NOTIFY CLIENT
         Notify = Notify,
         -- PEDS CLIENT
@@ -103,8 +109,5 @@ else
         
         -- CHOOSE CLOSEST PLAYER CLIENT
         ChoosePlayer = ChoosePlayer,
-
-
-        --//TODO dodělat target, dispatch
     }    
 end
