@@ -10,7 +10,7 @@ function AddBlip(Position, Sprite, Display, Scale, Colour, ShortRange, Name)
     SetBlipColour(blip, Colour)
     SetBlipAsShortRange(blip, ShortRange)
     BeginTextCommandSetBlipName("STRING")
-    AddTextComponentSubstringPlayerName("<FONT FACE='Oswald'>" .. Name .. "</FONT>")
+    AddTextComponentSubstringPlayerName("<FONT FACE='"..BridgeConfig.FontName.."'>" .. Name .. "</FONT>")
     EndTextCommandSetBlipName(blip)
     return blip
 end

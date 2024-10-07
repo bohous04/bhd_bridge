@@ -10,7 +10,8 @@ BridgeConfig = {
         PlayerSpawn = "esx:onPlayerSpawn",
         PlayerLoaded = "esx:playerLoaded",
         PlayerLogout = "esx:onPlayerLogout"
-    }
+    },
+    FontName = "oswald",
 }
 
 Wait(1000)
@@ -74,7 +75,24 @@ else
         -- VEHICLES CLIENT
         SetVehicleProperties = SetVehicleProperties,
         GetVehicleProperties = GetVehicleProperties,
+
         -- TARGET CLIENT
+        AddGlobalObject = AddGlobalObject,
+        RemoveGlobalObject = RemoveGlobalObject,
+        AddGlobalPed = AddGlobalPed,
+        RemoveGlobalPed = RemoveGlobalPed,
+        AddGlobalPlayer = AddGlobalPlayer,
+        RemoveGlobalPlayer = RemoveGlobalPlayer,
+        AddGlobalVehicle = AddGlobalVehicle,
+        RemoveGlobalVehicle = RemoveGlobalVehicle,
+        AddEntity = AddEntity,
+        RemoveEntity = RemoveEntity,
+        AddLocalEntity = AddLocalEntity,
+        RemoveLocalEntity = RemoveLocalEntity,
+        AddSphereZone = AddSphereZone,
+        AddBoxZone = AddBoxZone,
+        AddPolyZone = AddPolyZone,
+        RemoveZone = RemoveZone,
 
         -- DISPATCH CLIENT
         Dispatch = Dispatch,
