@@ -12,6 +12,9 @@ BridgeConfig = {
         PlayerLogout = "esx:onPlayerLogout"
     },
     FontName = "oswald",
+    AnticheatType = "fg", -- Aviable types: fg, sqz, wx
+    AnticheatName = "anticheat-name",
+
 }
 
 Wait(1000)
@@ -38,6 +41,7 @@ if isServer then
         AddItem = AddItem,
         RemoveItem = RemoveItem,
         ClearInventory = ClearInventory,
+        CanCarryItem = CanCarryItem,
         -- BAN SERVER
         Ban = Ban,
         -- NOTIFY SERVER
