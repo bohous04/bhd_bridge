@@ -92,8 +92,6 @@ Citizen.CreateThread(function()
                         optionNames[#optionNames+1] = v.target[i].name
                     end
                     exports.ox_target:removeLocalEntity(v.spawned, optionNames)
-
-                    exports.ox_target:removeLocalEntityAll(v.spawned)
                 end
                 DeleteEntity(v.spawned)
                 Config.Keys.NewKeyNPC[k].spawned = nil
