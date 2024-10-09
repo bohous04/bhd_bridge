@@ -16,5 +16,6 @@ function SetVehicleProperties(vehicle, props)
     elseif GetResourceState("qb_core") == "started" then
         --//TODO dodělat
     else
+
     end
 end

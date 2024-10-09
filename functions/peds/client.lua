@@ -1,5 +1,4 @@
-local peds = {
-    --[[
+local peds = {      --[[
     ["example"] = {
         pos = vec4(0.0, 0.0, 0.0, 0.0),
         hash = "s_m_y_dealer_01",
@@ -20,8 +19,7 @@ local peds = {
                 export = nil,
             },
         }
-    },
-    ]]
+    },]]
 }
 
 function CreateNPC(data)
@@ -81,7 +79,7 @@ Citizen.CreateThread(function()
 
                 peds[k].spawned = npc
                 if v.target then
-                    exports.ox_target:addLocalEntity(npc, v.target)
+                    Bridge.AddLocalEntity(npc, v.target)
                 end
 
                 SetModelAsNoLongerNeeded(v.hash)
@@ -91,7 +89,7 @@ Citizen.CreateThread(function()
                     for i = 1, #v.target do
                         optionNames[#optionNames+1] = v.target[i].name
                     end
-                    exports.ox_target:removeLocalEntity(v.spawned, optionNames)
+                    Bridge.RemoveLocalEntity(v.spawned, optionNames)
                 end
                 DeleteEntity(v.spawned)
                 Config.Keys.NewKeyNPC[k].spawned = nil

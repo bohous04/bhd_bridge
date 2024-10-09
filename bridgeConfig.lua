@@ -11,6 +11,7 @@ BridgeConfig = {
         PlayerLoaded = "esx:playerLoaded",
         PlayerLogout = "esx:onPlayerLogout"
     },
+    LogTypes = "ox_lib", -- ox_lib, discordWebhook
     FontName = "oswald",
     AnticheatType = "fg", -- Aviable types: fg, sqz, wx
     AnticheatName = "anticheat-name",
