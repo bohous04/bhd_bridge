@@ -1,5 +1,20 @@
+local function convert(options)
+    for id, v in pairs(options) do
+        if v.canInteract then
+            local canInteract = v.canInteract
+            v.canInteract = function(entity, distance, coords, name, bone)
+                print(json.encode(canInteract, { indent = true }))
+                print(type(canInteract[1]))
+                if type(canInteract) == "function" then return canInteract(entity, distance, coords, name, bone) end
+                return true
+            end
+        end
+    end
+    return options
+end
+
 function AddGlobalObject(options)
-    exports.ox_target:addGlobalObject(options)
+    exports.ox_target:addGlobalObject(convert(options))
 end
 
 function RemoveGlobalObject(optionNames)
@@ -7,7 +22,7 @@ function RemoveGlobalObject(optionNames)
 end
 
 function AddGlobalPed(options)
-    exports.ox_target:addGlobalPed(options)
+    exports.ox_target:addGlobalPed(convert(options))
 end
 
 function RemoveGlobalPed(optionNames)
@@ -15,7 +30,7 @@ function RemoveGlobalPed(optionNames)
 end
 
 function AddGlobalPlayer(options)
-    exports.ox_target:addGlobalPlayer(options)
+    exports.ox_target:addGlobalPlayer(convert(options))
 end
 
 function RemoveGlobalPlayer(optionNames)
@@ -23,7 +38,7 @@ function RemoveGlobalPlayer(optionNames)
 end
 
 function AddGlobalVehicle(options)
-    exports.ox_target:addGlobalVehicle(options)
+    exports.ox_target:addGlobalVehicle(convert(options))
 end
 
 function RemoveGlobalVehicle(optionNames)
@@ -31,7 +46,7 @@ function RemoveGlobalVehicle(optionNames)
 end
 
 function AddEntity(netIds, options)
-    exports.ox_target:addEntity(netIds, options)
+    exports.ox_target:addEntity(netIds, convert(options))
 end
 
 function RemoveEntity(netIds, optionNames)
@@ -39,7 +54,7 @@ function RemoveEntity(netIds, optionNames)
 end
 
 function AddLocalEntity(entities, options)
-    exports.ox_target:addLocalEntity(entities, options)
+    exports.ox_target:addLocalEntity(entities, convert(options))
 end
 
 function RemoveLocalEntity(entities, optionNames)
