@@ -1,14 +1,10 @@
 if BridgeConfig.TargetResource ~= "ox_target" then return end
 
 local function convert(options)
-    if v.job then v.groups = v.job end
-
     for id, v in pairs(options) do
         if v.canInteract then
             local canInteract = v.canInteract
             v.canInteract = function(entity, distance, coords, name, bone)
-                print(json.encode(canInteract, { indent = true }))
-                print(type(canInteract[1]))
                 if type(canInteract) == "function" then return canInteract(entity, distance, coords, name, bone) end
                 return true
             end
