@@ -1,4 +1,8 @@
+if BridgeConfig.TargetResource ~= "ox_target" then return end
+
 local function convert(options)
+    if v.job then v.groups = v.job end
+
     for id, v in pairs(options) do
         if v.canInteract then
             local canInteract = v.canInteract
@@ -45,32 +49,59 @@ function RemoveGlobalVehicle(optionNames)
     exports.ox_target:removeGlobalVehicle(optionNames)
 end
 
-function AddEntity(netIds, options)
-    exports.ox_target:addEntity(netIds, convert(options))
+function AddEntity(entities, options)
+    if type(entities) ~= "table" then entities = { entities } end
+    for i = 1, #entities do
+        local entity = entities[i]
+        if NetworkGetEntityIsNetworked(entity) then
+            exports.ox_target:addEntity(NetworkGetNetworkIdFromEntity(entity), convert(options))
+        else
+            exports.ox_target:addLocalEntity(entity, convert(options))
+        end
+    end
 end
 
-function RemoveEntity(netIds, optionNames)
-    exports.ox_target:removeEntity(netIds, optionNames)
+function RemoveEntity(entities, optionNames)
+    if type(entities) ~= 'table' then entities = { entities } end
+    for i = 1, #entities do
+        local entity = entities[i]
+        if NetworkGetEntityIsNetworked(entity) then
+            exports.ox_target:removeEntity(NetworkGetNetworkIdFromEntity(entity), optionNames)
+        else
+            exports.ox_target:removeLocalEntity(entity, optionNames)
+        end
+    end
 end
 
-function AddLocalEntity(entities, options)
-    exports.ox_target:addLocalEntity(entities, convert(options))
+function AddSphereZone(data)
+    return exports.ox_target:addSphereZone({
+        debug = data.debug,
+        name = data.name,
+        coords = data.coords,
+        radius = data.radius,
+        options = convert(data.options)
+    })
 end
 
-function RemoveLocalEntity(entities, optionNames)
-    exports.ox_target:removeLocalEntity(entities, optionNames)
+function AddBoxZone(data)
+    return exports.ox_target:addBoxZone({
+        debug = data.debug,
+        name = data.name,
+        coords = data.coords,
+        size = data.size,
+        rotation = data.rotation,
+        options = convert(data.options)
+    })
 end
 
-function AddSphereZone(parameters)
-    exports.ox_target:addSphereZone(parameters)
-end
-
-function AddBoxZone(parameters)
-    exports.ox_target:addBoxZone(parameters)
-end
-
-function AddPolyZone(parameters)
-    exports.ox_target:addPolyZone(parameters)
+function AddPolyZone(data)
+    return exports.ox_target:addPolyZone({
+        debug = data.debug,
+        name = data.name,
+        points = data.points,
+        thickness = data.height, 
+        options = convert(data.options)
+    })
 end
 
 function RemoveZone(id)

@@ -1,4 +1,4 @@
-if not GetResourceState('ox_inventory'):find('start') then return end
+if BridgeConfig.Inventory ~= "ox_inventory" then return end
 
 ---@param source number
 ---@param itemName string
@@ -51,4 +51,8 @@ end
 
 function SetDurability(inv, slot, durability)
     exports.ox_inventory:SetDurability(inv, slot, durability)
+end
+
+function SetMetadata(inv, slot, metadata)
+    exports.ox_inventory:SetMetadata(inv, slot, metadata)
 end

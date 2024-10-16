@@ -1,5 +1,5 @@
 function Dispatch(code, description, coords, jobs, blipName, blipSprite, blipScale, blipColor)
-    if GetResourceState("cd_dispatch") == "started" then
+    if BridgeConfig.Dispatch == "cd_dispatch" then
         local data = exports['cd_dispatch']:GetPlayerInfo()
         TriggerServerEvent('cd_dispatch:AddNotification', {
             job_table = jobs,
@@ -19,7 +19,7 @@ function Dispatch(code, description, coords, jobs, blipName, blipSprite, blipSca
                 radius = 0,
             }
         })
-    elseif GetResourceState("rcore_dispatch") == "starting" then
+    elseif BridgeConfig.Dispatch == "rcore_dispatch" then
         local data = {
             code = code, -- string -> The alert code, can be for example '10-64' or a little bit longer sentence like '10-64 - Shop robbery'
             default_priority = 'low', -- 'low' | 'medium' | 'high' -> The alert priority
@@ -40,7 +40,7 @@ function Dispatch(code, description, coords, jobs, blipName, blipSprite, blipSca
             }
         }
         TriggerServerEvent('rcore_dispatch:server:sendAlert', data)
-    elseif GetResourceState("qs-dispatch") == "starting" then
+    elseif BridgeConfig.Dispatch == "qs-dispatch" then
         TriggerServerEvent('qs-dispatch:server:CreateDispatchCall', {
             job = jobs,
             callLocation = coords,
@@ -58,7 +58,7 @@ function Dispatch(code, description, coords, jobs, blipName, blipSprite, blipSca
                 time = (5 * 60000), --blip fadeout time (1 * 60000) = 1 minute
             },
         })
-    elseif GetResourceState("ps-dispatch") == "started" then
+    elseif BridgeConfig.Dispatch == "ps-dispatch" then
         local dispatchData = {
             message = description, -- add this into your locale
             codeName = 'testalert', -- this should be the same as in config.lua

@@ -1,9 +1,9 @@
 function Notify(title, message, time, type)
-    if GetResourceState("okokNotify") == "started" then
+    if BridgeConfig.Notification == "okokNotify" then
         exports.okokNotify:Alert(title, message, time, type)
-    elseif GetResourceState("wasabi_notify") == "started" then
+    elseif BridgeConfig.Notification == "wasabi_notify" then
         exports.wasabi_notify:notify(title, message, time, type)
-    elseif GetResourceState("ox_lib") == "started" then
+    elseif BridgeConfig.Notification == "ox_lib" then
         lib.notify({
             title = title,
             description = message,

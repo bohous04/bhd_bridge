@@ -1,9 +1,9 @@
 function ServerNotify(source, message, time, type, title)
-    if GetResourceState("okokNotify") == "started" then
+    if BridgeConfig.Notification == "okokNotify" then
         TriggerClientEvent('okokNotify:Alert', source, title, message, time, type)
-    elseif GetResourceState("wasabi_notify") == "started" then
+    elseif BridgeConfig.Notification == "wasabi_notify" then
         TriggerClientEvent('wasabi_notify:notify', source, title, message, time, type)
-    elseif GetResourceState("ox_lib") == "started" then
+    elseif BridgeConfig.Notification == "ox_lib" then
         TriggerClientEvent('ox_lib:notify', source,{
             title = title,
             description = message,

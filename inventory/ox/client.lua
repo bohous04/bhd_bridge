@@ -1,3 +1,5 @@
+if BridgeConfig.Inventory ~= "ox_inventory" then return end
+
 function CloseInventory()
     exports.ox_inventory:closeInventory()
 end

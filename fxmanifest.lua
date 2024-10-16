@@ -15,7 +15,7 @@ files {
 shared_scripts {
     '@ox_lib/init.lua',
     'bridgeConfig.lua',
-    '**/shared.lua',
+    'main.lua',
 }
 
 client_scripts {
