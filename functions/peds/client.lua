@@ -89,7 +89,7 @@ Citizen.CreateThread(function()
                     for i = 1, #v.target do
                         optionNames[#optionNames+1] = v.target[i].name
                     end
-                    Bridge.RemoveLocalEntity(v.spawned, optionNames)
+                    Bridge.RemoveEntity(v.spawned, optionNames)
                 end
                 DeleteEntity(v.spawned)
                 Config.Keys.NewKeyNPC[k].spawned = nil

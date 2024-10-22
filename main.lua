@@ -83,8 +83,6 @@ else
         RemoveGlobalVehicle = RemoveGlobalVehicle,
         AddEntity = AddEntity,
         RemoveEntity = RemoveEntity,
-        AddLocalEntity = AddLocalEntity,
-        RemoveLocalEntity = RemoveLocalEntity,
         AddSphereZone = AddSphereZone,
         AddBoxZone = AddBoxZone,
         AddPolyZone = AddPolyZone,
