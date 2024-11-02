@@ -1,6 +1,13 @@
 if not GetResourceState('es_extended'):find('start') then return end
 
-ESX = exports['es_extended']:getSharedObject()
+IsExport, ESX = pcall(function()
+    return exports["es_extended"]:getSharedObject()
+end)
+
+if not IsExport then
+    TriggerEvent("esx:getSharedObject", function(coreObj) ESX = coreObj end)
+end
+
 
 ---@param source number
 ---@return number

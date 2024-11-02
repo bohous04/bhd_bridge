@@ -1,6 +1,19 @@
 if not GetResourceState('es_extended'):find('start') then return end
 
-ESX = exports['es_extended']:getSharedObject()
+ESX = nil
+
+Citizen.CreateThreadNow(function()
+    IsExport, ESX = pcall(function()
+        return exports["es_extended"]:getSharedObject()
+    end)
+
+    if not IsExport then
+        while not ESX do
+            TriggerEvent("esx:getSharedObject", function(coreObj) ESX = coreObj end)
+            Wait(500)
+        end
+    end
+end)
 
 local isDead = false
 AddEventHandler(BridgeConfig.FrameworkEvents.PlayerDeath, function()
