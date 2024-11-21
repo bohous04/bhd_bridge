@@ -70,7 +70,7 @@ end
 ---@return2 number
 function GetJob(source)
     local xPlayer = ESX.GetPlayerFromId(source)
-    return xPlayer.job.name, xPlayer.job.grade, xPlayer.job.grade_name
+    return xPlayer.job.name, xPlayer.job.grade, xPlayer.job.grade_name, xPlayer.job.label, xPlayer.job.grade_label
 end
 
 ---@param source number
@@ -101,3 +101,20 @@ function GetName(source)
     local xPlayer = ESX.GetPlayerFromId(source)
     return xPlayer.getName()
 end
+
+function GetJobs()
+    return ESX.GetJobs()
+end
+
+function GetPlayerFromIdentifier(identifier)
+    return ESX.GetPlayerFromIdentifier(identifier)
+end
+
+function SavePlayer(source)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    ESX.SavePlayer(xPlayer)
+end
+
+AddEventHandler("esx:setJob", function(source, newJob, oldJob)
+    TriggerEvent("bhd_bridge:setJob", source, newJob, oldJob)
+end)

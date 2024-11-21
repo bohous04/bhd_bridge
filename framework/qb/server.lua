@@ -119,3 +119,19 @@ function GetName(source)
     local Player = QBCore.Functions.GetPlayer(source)
     return Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname
 end
+
+function GetJobs()
+    return QBCore.Shared.Jobs
+end
+
+function GetPlayerFromIdentifier(identifier)
+    return QBCore.Functions.GetSource(identifier)
+end
+
+function SavePlayer(source)
+    QBCore.Player.Save(source)
+end
+
+AddEventHandler("QBCore:Server:OnJobUpdate", function(source, newJob)
+    TriggerEvent("bhd_bridge:setJob", source, newJob, oldJob)
+end)
