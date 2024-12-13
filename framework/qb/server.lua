@@ -85,7 +85,7 @@ end
 function GetJob(source)
     print("GetJob function called with args:", source)
     local Player = QBCore.Functions.GetPlayer(source)
-    return {name = Player.PlayerData.job.name, grade = Player.PlayerData.job.grade.level, grade_name = Player.PlayerData.job.grade.name, label = Player.PlayerData.job.label, grade_label = Player.PlayerData.job.grade.name},
+    return {name = Player.PlayerData.job.name, grade = Player.PlayerData.job.grade.level, grade_name = Player.PlayerData.job.grade.name, label = Player.PlayerData.job.label, grade_label = Player.PlayerData.job.grade.name}
 end
 
 ---@param source number

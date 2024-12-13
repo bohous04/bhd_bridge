@@ -15,4 +15,6 @@ BridgeConfig = {
     Inventory = "ox_inventory", -- ox_inventory, qs-inventory
     VehicleProperties = "esx", -- esx, qb, ox_lib
     Dispatch = "cd_dispatch", -- cd_dispatch, rcore_dispatch, qs-dispatch, ps-dispatch 
+    Phone = "lb-phone", -- okokPhone, qs-smartphone-pro, qs-smartphone, lb-phone
+    Society = "okokbanking", -- okokbanking, esx_society, qb_society
 }

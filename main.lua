@@ -36,7 +36,13 @@ if isServer then
         UpdateVehicle = UpdateVehicle,
         Search = Search,
         SetDurability = SetDurability,
-        
+        -- PHONE SERVER
+        GetPhone = GetPhone,
+        -- SOCIETY 
+        GetCompanyMoney = GetCompanyMoney,
+        AddCompanyMoney = AddCompanyMoney,
+        RemoveCompanyMoney = RemoveCompanyMoney,
+        SetCompanyMoney = SetCompanyMoney,
         -- BAN SERVER
         Ban = Ban,
         -- NOTIFY SERVER

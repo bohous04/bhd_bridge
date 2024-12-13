@@ -4,8 +4,13 @@ if BridgeConfig.LogTypes == "discordWebhook" and webhook == "" then
 end
 function Log(source, message, title)
     if BridgeConfig.LogTypes == "ox_lib" then
-        lib.logger(source, event, message)
+        lib.logger(source, title, message)
     elseif BridgeConfig.LogTypes == "discordWebhook" then
+        if webhook == "" then
+            print("[ERROR] You have to set webhook in bhd_bridge/log/server.lua")
+            print("[LOGS NOT CONFIGURED] "..source.." | "..title.." | "..message)
+            return
+        end
         PerformHttpRequest(webhook, function(err, text, headers)
         end, 'POST',
         json.encode({username = title, embeds = {
