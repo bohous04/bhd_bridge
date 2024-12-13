@@ -70,7 +70,7 @@ end
 ---@return2 number
 function GetJob(source)
     local xPlayer = ESX.GetPlayerFromId(source)
-    return xPlayer.job.name, xPlayer.job.grade, xPlayer.job.grade_name, xPlayer.job.label, xPlayer.job.grade_label
+    return {name = xPlayer.job.name, grade = xPlayer.job.grade, grade_name = xPlayer.job.grade_name, label = xPlayer.job.label, grade_label = xPlayer.job.grade_label},
 end
 
 ---@param source number
@@ -107,7 +107,17 @@ function GetJobs()
 end
 
 function GetPlayerFromIdentifier(identifier)
-    return ESX.GetPlayerFromIdentifier(identifier)
+    local data = ESX.GetPlayerFromIdentifier(identifier)
+    if data then
+        data = {
+            source = data.source,
+            job = {name = data.job.name, grade = data.job.grade, grade_name = data.job.grade_name, label = data.job.label, grade_label = data.job.grade_label},
+            name = data.name,
+            identifier = data.identifier,
+            birthDate = data.get("dateofbirth"),
+        }
+    end
+    return data
 end
 
 function SavePlayer(source)
@@ -118,3 +128,15 @@ end
 AddEventHandler("esx:setJob", function(source, newJob, oldJob)
     TriggerEvent("bhd_bridge:setJob", source, newJob, oldJob)
 end)
+
+function GetAllPlayers()
+    local returnData = {}
+    local xPlayers = ESX.GetExtendedPlayers()
+    for _, xPlayer in pairs(xPlayers) do
+        returnData[xPlayer.source] = {
+            job = {name = xPlayer.job.name, grade = xPlayer.job.grade, grade_name = xPlayer.job.grade_name, label = xPlayer.job.label, grade_label = xPlayer.job.grade_label},
+        }
+    end
+    
+    return returnData
+end

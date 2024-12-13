@@ -85,7 +85,7 @@ end
 function GetJob(source)
     print("GetJob function called with args:", source)
     local Player = QBCore.Functions.GetPlayer(source)
-    return Player.PlayerData.job.name, Player.PlayerData.job.grade.level, Player.PlayerData.job.grade.name
+    return {name = Player.PlayerData.job.name, grade = Player.PlayerData.job.grade.level, grade_name = Player.PlayerData.job.grade.name, label = Player.PlayerData.job.label, grade_label = Player.PlayerData.job.grade.name},
 end
 
 ---@param source number
@@ -125,7 +125,17 @@ function GetJobs()
 end
 
 function GetPlayerFromIdentifier(identifier)
-    return QBCore.Functions.GetSource(identifier)
+    local data = QBCore.Functions.GetPlayerByCitizenId(identifier)?.PlayerData
+    if data then
+        data = {
+            source = data.source,
+            job = {name = data.job.name, grade = data.job.grade.level, grade_name = data.job.grade.name, label = data.job.label, grade_label = data.job.grade.name},
+            name = data.charinfo.firstname.." "..data.charinfo.lastname,
+            identifier = data.citizenid,
+            birthDate = data.charinfo.birthdate,
+        }
+    end
+    return data
 end
 
 function SavePlayer(source)
@@ -135,3 +145,15 @@ end
 AddEventHandler("QBCore:Server:OnJobUpdate", function(source, newJob)
     TriggerEvent("bhd_bridge:setJob", source, newJob, oldJob)
 end)
+
+function GetAllPlayers()
+    local returnData = {}
+    local xPlayers = QBCore.Functions.GetQBPlayers()
+    for _, v in pairs(xPlayers) do
+        returnData[v.PlayerData.source] = {
+            job = {name = v.PlayerData.job.name, grade = v.PlayerData.job.grade.level, grade_name = v.PlayerData.job.grade.name, label = v.PlayerData.job.label, grade_label = v.PlayerData.job.grade.name},
+        }
+    end
+    
+    return returnData
+end

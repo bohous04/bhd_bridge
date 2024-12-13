@@ -24,6 +24,7 @@ if isServer then
         GetJobs = GetJobs,
         GetPlayerFromIdentifier = GetPlayerFromIdentifier,
         SavePlayer = SavePlayer,
+        GetAllPlayers = GetAllPlayers,
         -- INV SERVER
         HasItem = HasItem,
         GetItemCount = GetItemCount,
