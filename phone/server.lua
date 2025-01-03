@@ -1,7 +1,11 @@
 function GetPhone(source, identifier)
-    local phone = nil
+    local phone = "Unknown"
     if BridgeConfig.Phone == "lb-phone" then
-        phone = exports["lb-phone"]:GetEquippedPhoneNumber(source)
+        if source then
+            phone = exports["lb-phone"]:GetEquippedPhoneNumber(source)
+        else
+            phone = MySQL.scalar.await('SELECT phone_number FROM phone_phones WHERE id = ?', {identifier})
+        end
     elseif BridgeConfig.Phone == "okokPhone" then
         phone = exports['okokPhone']:getPhoneNumberFromSource(source)
     elseif BridgeConfig.Phone == "qs-smartphone-pro" then
