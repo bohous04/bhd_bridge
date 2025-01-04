@@ -79,7 +79,7 @@ Citizen.CreateThread(function()
 
                 peds[k].spawned = npc
                 if v.target then
-                    Bridge.AddLocalEntity(npc, v.target)
+                    Bridge.AddEntity(npc, v.target)
                 end
 
                 SetModelAsNoLongerNeeded(v.hash)
