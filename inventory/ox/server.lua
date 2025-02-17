@@ -5,7 +5,7 @@ if BridgeConfig.Inventory ~= "ox_inventory" then return end
 ---@param count? number
 ---@return boolean
 function HasItem(source, itemName, count, metadata)
-    local itemCount = exports.ox_inventory:GetItem(itemName, metadata, true)
+    local itemCount = exports.ox_inventory:GetItem(source, itemName, metadata, true)
     return itemCount >= (count or 1)
 end
 
@@ -26,7 +26,7 @@ function ClearInventory(source)
 end
 
 function GetItemCount(source, itemName, metadata)
-    local itemCount = exports.ox_inventory:GetItem(itemName, metadata, true)
+    local itemCount = exports.ox_inventory:GetItem(source, itemName, metadata, true)
     return itemCount
 end
 
