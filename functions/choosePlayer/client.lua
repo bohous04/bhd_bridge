@@ -1,5 +1,5 @@
 function ChoosePlayer(title)
-    local nearbyPlayers = lib.getNearbyPlayers(cache.coords, 10.0)
+    local nearbyPlayers = lib.getNearbyPlayers(GetEntityCoords(cache.ped), 10.0)
     local nearbyCount = #nearbyPlayers
     local chosenPlayer, currentlyHoveredPlayer = false, 0
     if nearbyCount == 0 then return end

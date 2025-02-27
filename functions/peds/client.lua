@@ -40,13 +40,9 @@ end
 
 Citizen.CreateThread(function()
     Wait(10000)
-    if not cache.coords then
-        local ped = PlayerPedId()
-        cache.coords = GetEntityCoords(ped)
-    end
     while true do
         for k, v in pairs(peds) do
-            local dist = #(vec3(v.pos) - cache.coords)
+            local dist = #(vec3(v.pos) - GetEntityCoords(cache.ped))
             if dist < 200 and not v.spawned then
                 Wait(15)
                 lib.requestModel(v.hash)
