@@ -44,10 +44,9 @@ Citizen.CreateThread(function()
         for k, v in pairs(peds) do
             local dist = #(vec3(v.pos) - GetEntityCoords(cache.ped))
             if dist < 200 and not v.spawned then
-                Wait(15)
-                lib.requestModel(v.hash)
-
-                local npc = CreatePed(4, v.hash, v.pos.x, v.pos.y, v.pos.z, v.pos[4], false, true)
+                local hash = GetHashKey(v.hash)
+                lib.requestModel(hash)
+                local npc = CreatePed(4, hash, v.pos.x, v.pos.y, v.pos.z, v.pos[4], false, true)
 
                 while not DoesEntityExist(npc) do
                     Wait(150)
@@ -79,7 +78,7 @@ Citizen.CreateThread(function()
                 end
 
                 SetModelAsNoLongerNeeded(v.hash)
-            elseif dist > 200 and v.spawned then
+            elseif dist >= 200 and v.spawned then
                 if v.target then
                     local optionNames = {}
                     for i = 1, #v.target do
@@ -88,7 +87,7 @@ Citizen.CreateThread(function()
                     Bridge.RemoveEntity(v.spawned, optionNames)
                 end
                 DeleteEntity(v.spawned)
-                Config.Keys.NewKeyNPC[k].spawned = nil
+                peds[k].spawned = nil
             end
         end
         Wait(5000)
