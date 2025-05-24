@@ -9,7 +9,9 @@ function ChoosePlayer(title)
     end
 
     local giveList, n = {}, 0
-
+    if not title then
+        title = 'Choose a player'
+    end
     for i = 1, #nearbyPlayers do
         local option = nearbyPlayers[i]
         option.id = GetPlayerServerId(option.id)
